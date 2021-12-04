@@ -6,14 +6,16 @@ with open("input.txt") as f:
 
 position = 0
 depth = 0
+aim = 0
 
 for c in data:
     if c[0] == "forward":
         position += c[1]
+        depth += c[1] * aim
     elif c[0] == "down":
-        depth += c[1]
+        aim += c[1]
     elif c[0] == "up":
-        depth -= c[1]
+        aim -= c[1]
     else:
         assert False, "unreachable"
 
