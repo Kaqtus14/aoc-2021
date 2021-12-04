@@ -36,7 +36,9 @@ def parse_boards():
         numbers = [int(x) for x in f.readline().strip().split(",")]
         boards = f.read().replace("  ", " ").split("\n\n")
 
-    boards = [[[int(x) for x in line.split(" ") if x] for line in board.split("\n") if line] for board in boards]
+    boards = [[[int(x) for x in line.split(" ") if x]
+              for line in board.split("\n") if line]
+              for board in boards]
     return numbers, boards
 
 

@@ -8,8 +8,8 @@ epsilon = ""
 for i in range(LENGTH):
     zeros = 0
     ones = 0
-    for l in data:
-        if l[i] == "1":
+    for line in data:
+        if line[i] == "1":
             ones += 1
         else:
             zeros += 1
