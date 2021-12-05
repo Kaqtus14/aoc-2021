@@ -1,0 +1,41 @@
+SIZE = 1000
+
+
+def print_grid(grid):
+    for row in grid:
+        for cell in row:
+            print(cell, end="")
+        print()
+
+
+with open("input.txt") as f:
+    lines = []
+
+    for line in f.read().strip().split("\n"):
+        line = line.replace(" -> ", ",")
+        s = tuple([int(x) for x in line.split(",")])
+        lines.append(s)
+
+grid = []
+for _ in range(SIZE):
+    grid.append([0] * SIZE)
+
+for l in lines:
+    print(l)
+    if l[0] != l[2] and l[1] == l[3]:
+        step = 1 if l[2] > l[0] else -1
+        for i in range(l[0], l[2]+step, step):
+            grid[l[1]][i] += 1
+
+    elif l[1] != l[3] and l[0] == l[2]:
+        step = 1 if l[3] > l[1] else -1
+        for i in range(l[1], l[3]+step, step):
+            grid[i][l[0]] += 1
+
+out = 0
+for row in grid:
+    for cell in row:
+        if cell >= 2:
+            out += 1
+
+print(out)
