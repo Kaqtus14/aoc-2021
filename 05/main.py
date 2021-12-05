@@ -32,6 +32,23 @@ for l in lines:
         for i in range(l[1], l[3]+step, step):
             grid[i][l[0]] += 1
 
+    else:
+        stepx = 1 if l[3] > l[1] else -1
+        stepy = 1 if l[2] > l[0] else -1
+
+        x = l[1]
+        y = l[0]
+        while True:
+            if x == l[3] and y == l[2]:
+                grid[x][y] += 1
+                break
+            grid[x][y] += 1
+            x += stepx
+            y += stepy
+
+    # print_grid(grid)
+    # print()
+
 out = 0
 for row in grid:
     for cell in row:
