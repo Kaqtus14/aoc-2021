@@ -1,18 +1,21 @@
 def day(fish):
-    new = []
+    new = {i: 0 for i in range(9)}
 
-    for f in fish:
-        if f == 0:
-            new.append(6)
-            new.append(8)
+    for k in fish:
+        if k == 0:
+            new[6] += fish[k]
+            new[8] += fish[k]
         else:
-            new.append(f - 1)
+            new[k - 1] += fish[k]
     return new
 
 
 with open("input.txt") as f:
-    fish = [int(x) for x in f.read().split(",")]
+    data = [int(x) for x in f.read().split(",")]
+    fish = {i: 0 for i in range(9)}
+    for f in data:
+        fish[f] += 1
 
 for i in range(256):
     fish = day(fish)
-    print(i, len(fish))
+print(i, sum(fish.values()))
