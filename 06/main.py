@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 def day(fish):
     new = {i: 0 for i in range(9)}
 
@@ -12,10 +15,8 @@ def day(fish):
 
 with open("input.txt") as f:
     data = [int(x) for x in f.read().split(",")]
-    fish = {i: 0 for i in range(9)}
-    for f in data:
-        fish[f] += 1
+    fish = Counter(data)
 
 for i in range(256):
     fish = day(fish)
-print(i, sum(fish.values()))
+print(sum(fish.values()))
