@@ -2,7 +2,7 @@
 My Advent of Code solutions
 
 ## TODO
-* Day 3 part 2
-* Day 4 part 2
-* Day 8 part 2
-* Day 9
+* Day 03 part 2
+* Day 04 part 2
+* Day 08 part 2
+* Day 09

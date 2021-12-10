@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     ifstream fp("input.txt");
 
-    int pos = 0, depth = 0;
+    int pos = 0, depth = 0, aim = 0;
 
     while (true) {
         string direction;
@@ -19,10 +19,11 @@ int main() {
 
         if (direction == "forward") {
             pos += amount;
-        }else if (direction == "up") {
-            depth -= amount;
-        }else if (direction == "down") {
-            depth += amount;
+            depth += amount * aim;
+        } else if (direction == "up") {
+            aim -= amount;
+        } else if (direction == "down") {
+            aim += amount;
         }
     }
 
