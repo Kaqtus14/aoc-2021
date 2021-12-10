@@ -1,3 +1,6 @@
+import statistics
+
+
 BRACKETS = {
     "(": ")",
     "[": "]",
@@ -6,15 +9,14 @@ BRACKETS = {
 }
 
 SCORES = {
-    ")": 3,
-    "]": 57,
-    "}": 1197,
-    ">": 25137,
-    "": 0,
+    ")": 1,
+    "]": 2,
+    "}": 3,
+    ">": 4,
 }
 
 
-def process_line(line: str) -> str:
+def process_line(line):
     opened = []
 
     for c in line:
@@ -22,14 +24,23 @@ def process_line(line: str) -> str:
             opened.append(BRACKETS[c])
         else:
             if opened.pop() != c:
-                return c
-    return ""
+                return None
+    return opened
 
 
 with open("input.txt") as f:
-    data = f.read().split("\n")
+    lines = f.read().split("\n")
 
-score = 0
-for line in data:
-    score += SCORES[process_line(line)]
-print(score)
+scores = []
+for line in lines:
+    res = process_line(line)
+    if not res:
+        continue
+
+    temp = 0
+    for b in res[::-1]:
+        temp *= 5
+        temp += SCORES[b]
+    scores.append(temp)
+
+print(statistics.median(scores))
