@@ -2,16 +2,13 @@
 #include <iostream>
 #include <vector>
 
+#include "../common.h"
+
 using namespace std;
 
 int main() {
     ifstream fp("input.txt");
-
-    vector<int> data;
-    int line;
-    while (fp >> line) {
-        data.push_back(line);
-    }
+    vector<int> data = read_ints(fp);
 
     int count = 0;
     for (int i = 1; i < data.size() - 2; i++) {

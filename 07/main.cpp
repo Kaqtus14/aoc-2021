@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+#include "../common.h"
+
 using namespace std;
 
 int get_spent_fuel(int target, vector<int> data) {
@@ -22,24 +24,9 @@ int get_spent_fuel(int target, vector<int> data) {
     return fuel;
 }
 
-int mean(vector<int> data) {
-    int sum = 0;
-    for (int i = 0; i < data.size(); i++) {
-        sum += data[i];
-    }
-
-    return (int)(sum / data.size());
-}
-
 int main() {
     ifstream fp("input.txt");
-
-    vector<int> data;
-    int line;
-    while (fp >> line) {
-        data.push_back(line);
-        fp.ignore();
-    }
+    vector<int> data = read_ints_comma(fp);
 
     cout << mean(data) << "\n";
     cout << get_spent_fuel(mean(data), data) << "\n";
