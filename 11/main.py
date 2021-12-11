@@ -69,7 +69,7 @@ for i in range(1000):
 
     flashed = remove_flashed(data)
     if flashed == 100 and not found:
-        print(i+1)
+        print("part 2:", i+1)
         found = True
 
-print(flashes)
+print("part 1:", flashes)
