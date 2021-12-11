@@ -2,11 +2,16 @@ import sys
 sys.setrecursionlimit(9999)
 
 
-def remove_flashed(data, flashed):
+def remove_flashed(data):
+    flashed = 0
+
     for x in range(len(data)):
         for y in range(len(data)):
-            if (x, y) in flashed or data[x][y] > 9:
+            if data[x][y] > 9:
                 data[x][y] = 0
+                flashed += 1
+
+    return flashed
 
 
 def increase_all(data):
@@ -48,20 +53,23 @@ def flash(data, total_flashes=0, flashed=None):
     if flashes > 0:
         return flash(data, total_flashes+flashes, flashed)
 
-    return total_flashes+flashes, flashed
+    return total_flashes+flashes
 
 
 with open("input.txt") as f:
     data = [[int(c) for c in line]
             for line in f.read().split("\n")]
 
+found = False
 flashes = 0
-for _ in range(100):
+for i in range(1000):
     increase_all(data)
-    count, flashed = flash(data)
+    count = flash(data)
     flashes += count
 
-    remove_flashed(data, flashed)
+    flashed = remove_flashed(data)
+    if flashed == 100 and not found:
+        print(i+1)
+        found = True
 
-print_grid(data)
 print(flashes)
