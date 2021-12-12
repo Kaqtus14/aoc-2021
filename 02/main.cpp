@@ -3,7 +3,8 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
     ifstream fp("input.txt");
 
     int pos = 0, depth = 0, aim = 0;

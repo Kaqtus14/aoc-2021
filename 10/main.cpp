@@ -8,10 +8,11 @@
 
 using namespace std;
 
-map<char, int> SCORES = {{')', 1}, {']', 2}, {'}', 3}, {'>', 4}};
-map<char, char> BRACKETS = {{'(', ')'}, {'[', ']'}, {'{', '}'}, {'<', '>'}};
+map<char, int> SCORES = { { ')', 1 }, { ']', 2 }, { '}', 3 }, { '>', 4 } };
+map<char, char> BRACKETS = { { '(', ')' }, { '[', ']' }, { '{', '}' }, { '<', '>' } };
 
-vector<char> process_line(string line) {
+vector<char> process_line(string line)
+{
     vector<char> expected;
 
     for (auto c : line) {
@@ -27,7 +28,8 @@ vector<char> process_line(string line) {
     return expected;
 }
 
-int main() {
+int main()
+{
     ifstream fp("input.txt");
 
     string line;
@@ -48,7 +50,7 @@ int main() {
         scores.push_back(score);
     }
 
-    cout << fixed;  // dont use scientific notation
+    cout << fixed; // dont use scientific notation
     cout << median(scores) << "\n";
     return 0;
 }

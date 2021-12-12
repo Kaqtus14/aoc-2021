@@ -6,7 +6,8 @@
 
 using namespace std;
 
-int get_spent_fuel(int target, vector<int> data) {
+int get_spent_fuel(int target, vector<int> data)
+{
     int fuel = 0;
 
     for (int i = 0; i < data.size(); i++) {
@@ -24,7 +25,8 @@ int get_spent_fuel(int target, vector<int> data) {
     return fuel;
 }
 
-int main() {
+int main()
+{
     ifstream fp("input.txt");
     vector<int> data = read_ints_comma(fp);
 
