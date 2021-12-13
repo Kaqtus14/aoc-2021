@@ -1,3 +1,23 @@
+def print_dots(dots):
+    max_x = max([d[1] for d in dots])+1
+    max_y = max([d[0] for d in dots])+1
+
+    grid = []
+    for _ in range(max_x):
+        row = []
+        for _ in range(max_y):
+            row.append(0)
+        grid.append(row)
+
+    for d in dots:
+        grid[d[1]][d[0]] = 1
+
+    for row in grid:
+        for cell in row:
+            print(end="#" if cell else " ")
+        print()
+
+
 def parse_input():
     with open("input.txt") as f:
         data = f.read().split("\n\n")
@@ -29,5 +49,6 @@ def fold(dots, fold):
 
 
 dots, folds = parse_input()
-dots = fold(dots, folds[0])
-print(len(dots))
+for f in folds:
+    dots = fold(dots, f)
+print_dots(dots)
