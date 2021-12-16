@@ -35,8 +35,8 @@ with open("input.txt") as f:
     template = {}
     temp = parts[0]
     for i in range(len(temp)-1):
-        l = temp[i]+temp[i+1]
-        template = add(template, l, 1)
+        key = temp[i]+temp[i+1]
+        template = add(template, key, 1)
 
     pairs = {}
     for line in parts[1].split("\n"):
