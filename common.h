@@ -34,7 +34,7 @@ std::vector<std::string> read_lines(std::ifstream& fp)
 {
     std::vector<std::string> out;
     std::string line;
-    while (fp >> line) {
+    while (getline(fp, line)) {
         out.push_back(line);
     }
     return out;

@@ -6,5 +6,3 @@ My Advent of Code solutions
 * Day 04 part 2
 * Day 08 part 2
 * Day 09 part 2
-* Day 12
-* Day 15
