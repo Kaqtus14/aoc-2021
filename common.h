@@ -30,6 +30,15 @@ long median(std::vector<long> v)
     return v[n];
 }
 
+std::vector<std::string> read_lines(std::ifstream& fp)
+{
+    std::vector<std::string> out;
+    std::string line;
+    while (fp >> line) {
+        out.push_back(line);
+    }
+    return out;
+}
 std::vector<int> read_ints(std::ifstream& fp)
 {
     std::vector<int> out;
