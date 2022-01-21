@@ -39,6 +39,23 @@ std::vector<std::string> read_lines(std::ifstream& fp)
     }
     return out;
 }
+
+std::vector<std::string> split(std::string s, std::string delim)
+{
+    std::vector<std::string> out;
+
+    while(true) {
+        size_t pos = s.find(delim);
+        if(pos == std::string::npos) {
+            out.push_back(s);
+            return out;
+        }
+
+        out.push_back(s.substr(0, pos));
+        s.erase(0, pos+delim.length());
+    }
+}
+
 std::vector<int> read_ints(std::ifstream& fp)
 {
     std::vector<int> out;
